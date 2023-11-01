@@ -12,13 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('album');
             $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('duration');
-        });
+        }); 
     }
 
     /**

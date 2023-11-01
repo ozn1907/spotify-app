@@ -17,8 +17,7 @@ class Artist extends Model
 
     protected $casts = [
         'date' => 'date',
-     ];
+    ];
 
     public $timestamps = false;
-
 }

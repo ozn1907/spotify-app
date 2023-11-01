@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Http\Request;
 use App\Models\Artist;
+use Illuminate\Support\Facades\DB;
 
 class ArtistController extends Controller
 {
     public function show()
     {
-        $artists = Artist::all();
-
+        $artists = Artist::paginate(5);
         $totalDurationInSeconds = $artists->sum('duration');
 
         // Calculate total duration in hours and minutes
@@ -44,7 +44,7 @@ class ArtistController extends Controller
             'duration' => 'required|integer|min:1',
         ]);
 
-        Artist::create($validatedData); 
+        Artist::create($validatedData);
 
         return redirect('/');
     }
