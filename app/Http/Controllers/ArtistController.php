@@ -12,7 +12,7 @@ class ArtistController extends Controller
 {
     public function show()
     {
-        $artists = Artist::paginate(5);
+        $artists = Artist::all();
         $totalDurationInSeconds = $artists->sum('duration');
 
         // Calculate total duration in hours and minutes

@@ -1,6 +1,5 @@
 <div class="mt-10">
     <div class="flex text-gray-600">
-        <div class="p-3 w-12">#</div>
         <div class="p-3 w-full">Title</div>
         <div class="p-3 w-full">Album</div>
         <div class="p-3 w-full">Date Added</div>
@@ -13,7 +12,6 @@
 
 @foreach ($artists as $artist)
 <div class="flex border-b border-gray-800 hover:bg-gray-800">
-    <div class="p-3">{{$artist['id'] }}</div>
     <div class="p-3 w-full">{{ $artist['title'] }}</div>
     <div class="p-3 w-full">{{ $artist['album'] }}</div>
     <div class="p-3 w-full">{{ $artist['date']->format('d F Y') }}</div>
@@ -26,6 +24,3 @@
     </div>
 </div>
 @endforeach
-<div class="mt-8 text-center">
-    {{ $artists->links() }}
-</div>
