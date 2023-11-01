@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\form;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Artist extends Component
+class AddArtist extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $artists;
-
-    public function __construct($artists)
+    public function __construct()
     {
-        $this->artists = $artists;
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class Artist extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.artists');
+        return view('components.add-artist');
     }
 }

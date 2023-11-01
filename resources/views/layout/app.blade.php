@@ -9,13 +9,14 @@
 </head>
 
 <body>
-    <x-header :title="'Gelikete nummers'" :totalSongsSynced="$totalSongsSynced" :totalDurationInHours="$totalDurationInHours" :totalDurationInMinutes="$totalDurationInMinutes" />
+    <x-header :title="'Gelikete nummers'" :totalSongsSynced="$totalSongsSynced"
+        :totalDurationInHours="$totalDurationInHours" :totalDurationInMinutes="$totalDurationInMinutes" />
 
     <main>
         @yield('content')
     </main>
 
-    <x-artists :artists="$artists" />
+    <x-artists :Artists="$artists" />
 
 </body>
 

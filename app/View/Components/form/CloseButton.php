@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class add_artist extends Component
+class CloseButton extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class add_artist extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.add_artist');
+        return view('components.form.close-button');
     }
 }
