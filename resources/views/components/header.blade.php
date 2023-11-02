@@ -1,6 +1,5 @@
-@props(['title'])
-
-<div class="bg-black text-gray-300 min-h-screen p-10">
+@props(['title', 'artist'])
+<div class="bg-black text-gray-300 min-h-screen p-14">
     <div class="flex">
         <img class="mr-6" src="https://placekitten.com/g/200/200">
         <div class="flex flex-col justify-center">
@@ -17,7 +16,7 @@
             </p>
             <div class="pt-2">
                 <button
-                    class="bg-transparent hover:border-green-500 text-gray-500 hover:text-green-500 font-bold duration-300 focus:outline-none"
+                    class="bg-transparent hover:border-green-500 text-white hover:text-green-500 font-bold duration-300 focus:outline-none"
                     type="button" data-modal-toggle="authentication-modal">
                     <x-css-add />
                 </button>
@@ -25,9 +24,4 @@
         </div>
     </div>
 
-    <!-- This is an example component -->
-    <div class="max-w-2xl mx-auto">
-        <!-- Main modal -->
-        <x-add-artist />
-
-    </div>
+    <x-add-artist />

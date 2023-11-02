@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class ArtistController extends Controller
 {
+
+
     public function show()
     {
         $artists = Artist::all();
@@ -43,6 +45,36 @@ class ArtistController extends Controller
 
         return redirect('/');
     }
+
+    public function view($id)
+    {
+        $artist = Artist::find($id);
+
+        return view('components.edit-artist', [
+            'artist' => $artist,
+        ]);
+    }
+
+
+    public function edit(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'album' => 'required|string|max:255',
+            'duration' => 'required|integer|min:1',
+        ]);
+
+        $artist = Artist::find($id);
+
+        if (!$artist) {
+            return redirect()->back()->with('error', 'Record not found');
+        }
+
+        $artist->update($validatedData);
+
+        return redirect('/');
+    }
+
 
 
     public function store(Request $request)
