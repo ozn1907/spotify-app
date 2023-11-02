@@ -3,3 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swal2-popup .swal2-styled:focus {
+    box-shadow: none !important;
+}

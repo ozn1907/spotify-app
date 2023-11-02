@@ -36,6 +36,15 @@ class ArtistController extends Controller
         return redirect('/');
     }
 
+    public function deleteAll()
+    {
+        // Delete all records from the 'title' table
+        DB::table('artists')->delete();
+
+        return redirect('/');
+    }
+
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

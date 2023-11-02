@@ -15,7 +15,6 @@
                 {{ $totalDurationInMinutes }} minute{{ $totalDurationInMinutes > 1 ? 's' : '' }}
                 @endif
             </p>
-
             <div class="pt-2">
                 <button
                     class="bg-transparent hover:border-green-500 text-gray-500 hover:text-green-500 font-bold duration-300 focus:outline-none"
@@ -28,7 +27,7 @@
 
     <!-- This is an example component -->
     <div class="max-w-2xl mx-auto">
-
         <!-- Main modal -->
         <x-add-artist />
+
     </div>
