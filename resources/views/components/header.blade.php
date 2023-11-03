@@ -24,3 +24,4 @@
         </div>
     </div>
     <x-add-artist />
+    <x-form.alert />

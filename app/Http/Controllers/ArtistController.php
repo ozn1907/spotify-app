@@ -33,9 +33,11 @@ class ArtistController extends Controller
     public function delete($id)
     {
         $artist = Artist::find($id);
+
         $artist->delete();
-        return redirect('/');
+        return redirect()->route('home')->with('delete', 'User deleted successfully!');
     }
+
 
     public function deleteAll()
     {
@@ -65,13 +67,9 @@ class ArtistController extends Controller
 
         $artist = Artist::find($id);
 
-        if (!$artist) {
-            return redirect()->back()->with('error', 'Record not found');
-        }
-
         $artist->update($validatedData);
 
-        return redirect('/');
+        return redirect()->route('home')->with('edit', 'User updated successfully!');
     }
 
 
@@ -86,6 +84,7 @@ class ArtistController extends Controller
 
         Artist::create($validatedData);
 
-        return redirect('/');
+        // return redirect('/');
+        return redirect()->route('home')->with('success', 'User added successfully!');
     }
 }

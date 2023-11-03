@@ -26,7 +26,9 @@
                 @error('duration')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
+
                 <x-form.button type="submit" text="ADD" />
+
             </form>
         </div>
     </div>

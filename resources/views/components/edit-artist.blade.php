@@ -3,7 +3,7 @@
 <div class="max-w-3xl mx-auto">
     <div class="bg-white relative">
         <div class="flex justify-end pt-5 pr-5">
-            <a href="{{ route('home') }}" class="w-8 h-8">
+            <a href="{{ route('home') }}" class="w-8 h-8 hover:text-black">
                 <x-monoicon-close />
             </a>
 
