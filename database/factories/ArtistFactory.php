@@ -21,6 +21,7 @@ class ArtistFactory extends Factory
             'album' => $this->faker->word,
             'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'), // Generates a random date in 'Y-m-d' format.
             'duration' => $this->faker->numberBetween(60, 600), // Assuming duration in seconds
-        ];        
+            'uuid' => $this->faker->uuid,
+        ];
     }
 }

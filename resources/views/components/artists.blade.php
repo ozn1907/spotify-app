@@ -30,10 +30,10 @@
     </div>
 
     <div class="p-3 w-12 text-right flex justify-end">
-        <a href="{{ route('view', ['id' => $artist['id']]) }}" class="hover:text-green-500 duration-300">
+        <a href="{{ route('view', ['uuid' => $artist['uuid']]) }}" class="hover:text-green-500 duration-300">
             <x-tabler-edit />
         </a>
-        <a href="{{ route('delete', ['id' => $artist['id']]) }}" class="hover:text-red-500 duration-300">
+        <a href="{{ route('delete', ['uuid' => $artist['uuid']]) }}" class="hover:text-red-500 duration-300">
             <x-css-trash />
         </a>
     </div>

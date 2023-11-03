@@ -14,11 +14,12 @@ return new class extends Migration
     {
 
         Schema::create('artists', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('title');
             $table->string('album');
             $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('duration');
+            $table->uuid('uuid')->unique();
         });
     }
 
