@@ -13,7 +13,7 @@ use App\Http\Controllers\ArtistController;
 |
 */
 
-Route::get('/', [ArtistController::class, 'show']);
+Route::get('/', [ArtistController::class, 'show'])->name('home');
 Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('delete');
 Route::get('/view/{id}', [ArtistController::class, 'view'])->name('view');
 Route::post('/edit/{id}', [ArtistController::class, 'edit'])->name('edit');

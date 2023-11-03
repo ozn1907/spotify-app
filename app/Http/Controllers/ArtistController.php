@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 class ArtistController extends Controller
 {
 
-
     public function show()
     {
         $artists = Artist::all();

@@ -1,5 +1,5 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@props(['artists', 'artist', 'records'])
+<script src="{{ asset('/js/app.js') }}"></script>
+
 <div class="mt-10">
     <div class="flex text-gray-600">
         <!-- Add 'justify-end' class here -->
@@ -28,8 +28,9 @@
     <div class="p-3 w-full">
         {{ number_format($artist['duration'] / 60, 2) }}
     </div>
+
     <div class="p-3 w-12 text-right flex justify-end">
-        <a href="{{ route('view', ['id' => $artist['id']]) }}" class="hover:text-red-500 duration-300">
+        <a href="{{ route('view', ['id' => $artist['id']]) }}" class="hover:text-green-500 duration-300">
             <x-tabler-edit />
         </a>
         <a href="{{ route('delete', ['id' => $artist['id']]) }}" class="hover:text-red-500 duration-300">
@@ -54,4 +55,5 @@
             }
         });
     }
+
 </script>
