@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Artist extends Model
 {
     use HasFactory;
+
+    protected static function booted()
+    {
+        static::creating(function ($artist) {
+            $artist->uuid = Uuid::uuid4();
+        });
+    }
+
     protected $fillable = [
         'title',
         'album',

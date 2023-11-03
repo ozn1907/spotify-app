@@ -16,7 +16,7 @@ use App\Http\Controllers\ArtistController;
 Route::get('/', [ArtistController::class, 'show'])->name('home');
 Route::get('/delete/{uuid}', [ArtistController::class, 'delete'])->name('delete');
 Route::get('/view/{uuid}', [ArtistController::class, 'view'])->name('view');
-Route::post('/edit/{id}', [ArtistController::class, 'edit'])->name('edit');
+Route::post('/edit/{uuid}', [ArtistController::class, 'edit'])->name('edit');
 
 Route::get('/artists/create', [ArtistController::class, 'create'])->name('artists.create');
 Route::post('/artists', [ArtistController::class, 'store'])->name('artists.store');

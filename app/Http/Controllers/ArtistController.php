@@ -28,9 +28,9 @@ class ArtistController extends Controller
         ]);
     }
 
-    public function delete($id)
+    public function delete($uuid)
     {
-        $artist = Artist::find($id);
+        $artist = Artist::where('uuid', $uuid)->first();
 
         $artist->delete();
         return redirect()->route('home')->with('delete', 'User deleted successfully!');
@@ -44,9 +44,9 @@ class ArtistController extends Controller
         return redirect('/');
     }
 
-    public function view($id)
+    public function view($uuid)
     {
-        $artist = Artist::find($id);
+        $artist = Artist::where('uuid', $uuid)->first();
 
         return view('components.edit-artist', [
             'artist' => $artist,
@@ -62,11 +62,14 @@ class ArtistController extends Controller
         ]);
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $uuid)
     {
-        Artist::find($id)->update($this->validateArtistData($request));
+        $artist = Artist::where('uuid', $uuid)->first();
+
+        $artist->update($this->validateArtistData($request));
         return redirect()->route('home')->with('edit', 'User updated successfully!');
     }
+
 
     public function store(Request $request)
     {

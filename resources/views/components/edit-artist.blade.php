@@ -8,7 +8,7 @@
             </a>
 
         </div>
-        <form method="POST" action="{{ route('edit', ['id' => $artist->id]) }}"
+        <form method="POST" action="{{ route('edit', ['uuid' => $artist->uuid]) }}"
             class="space-y-4 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8">
             @csrf
             <h3 class="text-xl font-medium text-gray-900">Edit an artist</h3>
