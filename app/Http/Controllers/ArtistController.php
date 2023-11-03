@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Schema;
-
 use Illuminate\Http\Request;
 use App\Models\Artist;
 use Illuminate\Support\Facades\DB;
@@ -32,20 +30,18 @@ class ArtistController extends Controller
 
     public function delete($id)
     {
-        $artist = Artist::find($id);
+        Artist::destroy($id);
 
-        $artist->delete();
         return redirect()->route('home')->with('delete', 'User deleted successfully!');
     }
 
-
     public function deleteAll()
     {
-        // Delete all records from the 'title' table
-        DB::table('artists')->delete();
+        Artist::truncate();
 
-        return redirect('/');
+        return redirect()->route('home')->with('delete', 'All users deleted successfully!');
     }
+
 
     public function view($id)
     {
@@ -56,35 +52,24 @@ class ArtistController extends Controller
         ]);
     }
 
+    protected function validateArtistData(Request $request)
+    {
+        return $request->validate([
+            'title' => 'required|string|max:255',
+            'album' => 'required|string|max:255',
+            'duration' => 'required|integer|min:1',
+        ]);
+    }
 
     public function edit(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'album' => 'required|string|max:255',
-            'duration' => 'required|integer|min:1',
-        ]);
-
-        $artist = Artist::find($id);
-
-        $artist->update($validatedData);
-
+        Artist::find($id)->update($this->validateArtistData($request));
         return redirect()->route('home')->with('edit', 'User updated successfully!');
     }
 
-
-
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'album' => 'required|string|max:255',
-            'duration' => 'required|integer|min:1',
-        ]);
-
-        Artist::create($validatedData);
-
-        // return redirect('/');
+        Artist::create($this->validateArtistData($request));
         return redirect()->route('home')->with('success', 'User added successfully!');
     }
 }
