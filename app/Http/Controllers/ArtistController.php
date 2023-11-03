@@ -30,18 +30,19 @@ class ArtistController extends Controller
 
     public function delete($id)
     {
-        Artist::destroy($id);
+        $artist = Artist::find($id);
 
+        $artist->delete();
         return redirect()->route('home')->with('delete', 'User deleted successfully!');
     }
 
+
     public function deleteAll()
     {
-        Artist::truncate();
+        DB::table('artists')->delete();
 
-        return redirect()->route('home')->with('delete', 'All users deleted successfully!');
+        return redirect('/');
     }
-
 
     public function view($id)
     {
