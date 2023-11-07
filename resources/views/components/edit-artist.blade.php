@@ -1,5 +1,4 @@
 @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/flowbite.js'])
-
 <div class="max-w-3xl mx-auto">
     <div class="bg-white relative">
         <div class="flex justify-end pt-5 pr-5">
@@ -28,6 +27,9 @@
             <x-form.form-field label="Duration" name="duration" type="number" placeholder="Edit duration" />
             @error('duration')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @php
+            dd($message);
+            @endphp
             @enderror
             <x-form.button type="submit" text="UPDATE" />
         </form>

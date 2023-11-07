@@ -16,6 +16,7 @@
     <x-header :title="'Liked songs'" :totalSongsSynced="$totalSongsSynced" :totalDurationInHours="$totalDurationInHours"
         :totalDurationInMinutes="$totalDurationInMinutes" />
 
+
     <x-artists :artists="$artists" />
 
 </body>

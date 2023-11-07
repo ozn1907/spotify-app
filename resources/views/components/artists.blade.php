@@ -39,6 +39,8 @@
     </div>
 </div>
 @endforeach
+
+
 <script>
     function deleteAllArtists() {
         Swal.fire({
@@ -55,5 +57,4 @@
             }
         });
     }
-
 </script>

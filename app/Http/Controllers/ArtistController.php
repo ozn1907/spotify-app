@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Artist;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ArtistRequest;
 
 class ArtistController extends Controller
 {
-
     public function show()
     {
         $artists = Artist::all();
@@ -18,30 +16,28 @@ class ArtistController extends Controller
         $totalDurationInHours = floor($totalDurationInSeconds / 3600);
         $totalDurationInMinutes = ($totalDurationInSeconds % 3600) / 60;
 
-        // Format the minutes with two decimal places
-        $totalDurationInMinutesFormatted = number_format($totalDurationInMinutes, 2);
         return view('layout.app', [
             'artists' => $artists,
             'totalSongsSynced' => $artists->count(),
             'totalDurationInHours' => $totalDurationInHours,
-            'totalDurationInMinutes' => $totalDurationInMinutesFormatted,
+            'totalDurationInMinutes' => number_format($totalDurationInMinutes, 2),
         ]);
     }
 
     public function delete($uuid)
     {
-        $artist = Artist::where('uuid', $uuid)->first();
+        Artist::where('uuid', $uuid)->delete();
 
-        $artist->delete();
-        return redirect()->route('home')->with('delete', 'User deleted successfully!');
+        return redirect()->route('home')->with('delete', 'Artist deleted successfully!');
     }
-
 
     public function deleteAll()
     {
-        DB::table('artists')->delete();
+        Artist::query()->truncate();
 
-        return redirect('/');
+
+
+        return redirect()->route('home');
     }
 
     public function view($uuid)
@@ -53,27 +49,17 @@ class ArtistController extends Controller
         ]);
     }
 
-    protected function validateArtistData(Request $request)
-    {
-        return $request->validate([
-            'title' => 'required|string|max:255',
-            'album' => 'required|string|max:255',
-            'duration' => 'required|integer|min:1',
-        ]);
-    }
-
-    public function edit(Request $request, $uuid)
+    public function edit(ArtistRequest $request, $uuid)
     {
         $artist = Artist::where('uuid', $uuid)->first();
 
-        $artist->update($this->validateArtistData($request));
-        return redirect()->route('home')->with('edit', 'User updated successfully!');
+        $artist->update($request->validated());
+        return redirect()->route('home')->with('edit', 'Artist updated successfully!');
     }
 
-
-    public function store(Request $request)
+    public function store(ArtistRequest $request)
     {
-        Artist::create($this->validateArtistData($request));
-        return redirect()->route('home')->with('success', 'User added successfully!');
+        Artist::create($request->validated());
+        return redirect()->route('home')->with('success', 'Artist added successfully!');
     }
 }
