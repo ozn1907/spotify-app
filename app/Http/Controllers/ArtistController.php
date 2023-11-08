@@ -35,8 +35,6 @@ class ArtistController extends Controller
     {
         Artist::query()->truncate();
 
-
-
         return redirect()->route('home');
     }
 

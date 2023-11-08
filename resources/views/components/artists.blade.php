@@ -1,5 +1,3 @@
-<script src="{{ asset('/js/app.js') }}"></script>
-
 <div class="mt-10">
     <div class="flex text-gray-600">
         <!-- Add 'justify-end' class here -->
@@ -33,7 +31,8 @@
         <a href="{{ route('view', ['uuid' => $artist['uuid']]) }}" class="hover:text-green-500 duration-300">
             <x-tabler-edit />
         </a>
-        <a href="{{ route('delete', ['uuid' => $artist['uuid']]) }}" class="hover:text-red-500 duration-300">
+        <a href="{{ route('delete', ['uuid' => $artist['uuid']]) }}" class="hover:text-red-500 duration-300"
+            onclick="return confirm('Are you sure?')">
             <x-css-trash />
         </a>
     </div>
