@@ -24,13 +24,6 @@ class ArtistController extends Controller
         ]);
     }
 
-    public function delete($uuid)
-    {
-        Artist::where('uuid', $uuid)->delete();
-
-        return redirect()->route('home')->with('delete', 'Artist deleted successfully!');
-    }
-
     public function deleteAll()
     {
         Artist::query()->truncate();
@@ -59,5 +52,11 @@ class ArtistController extends Controller
     {
         Artist::create($request->validated());
         return redirect()->route('home')->with('success', 'Artist added successfully!');
+    }
+
+    public function delete($uuid)
+    {
+        Artist::where('uuid', $uuid)->delete();
+        return redirect()->route('home')->with('delete', 'Artist deleted successfully!');
     }
 }
