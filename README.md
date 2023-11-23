@@ -30,7 +30,7 @@ Laravel was chosen as the framework for this CRUD system due to its elegant synt
 
 To get started with the Laravel CRUD System, follow these steps:
 1. **Clone the Repository:**
-`   git clone https://github.com/ozn1907/spotify-app`
+`git clone https://github.com/ozn1907/spotify-app`
 
 2. **Change to Project Directory:**
     `cd spotify-app`
